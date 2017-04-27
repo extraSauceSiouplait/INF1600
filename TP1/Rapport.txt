@@ -1,0 +1,457 @@
+﻿Équipier1:  
+William  Harvey
+Équipier2:  
+Mathieu  Bélanger
+E1.1  
+a)
+[wihar@l3818-12 log1000-62]$ git log
+commit f8f7daa2dd78d8ada1d4895a2e13f1361036e2d6
+Author: William Harvey <wihar@l3818-12.info.polymtl.ca>
+Date:   Mon Feb 6 20:48:10 2017 -0500
+
+    Fichiers originaux
+
+commit 1b2a6fdc629acea28d1672e5941d0912728eeb7f
+Author: admin <gigl-technique@polymtl.ca>
+Date:   Tue Sep 11 15:51:58 2012 -0400
+
+    Commit administratif
+
+commit 70996bca0add50159f527a3495c0e19d965081c1
+Author: Luc Lalonde <Luc.Lalonde@polymtl.ca>
+Date:   Tue Sep 11 15:31:01 2012 -0400
+
+    Premier commit
+b)
+La différence entre «git log» et «git log -p» est que le premier liste tous les commit effectués sur la branche du git, tandis que le deuxième montre toutes les modifications effectuées aux fichiers depuis le dernier commit.
+E1.2  
+2)
+-­
+a)
+[wihar@l3818-12 src]$ git status
+Sur la branche master
+Votre branche est à jour avec 'origin/master'.
+Modifications qui ne seront pas validées :
+  (utilisez "git add <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git checkout -- <fichier>..." pour annuler les modifications dans la copie de travail)
+
+    modifié :         HashMap.cpp
+    modifié :         HashMap.h
+
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+
+    pari
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+
+2
+-­
+b)
+Ces fichiers sont écrits en rouge, car ils ne sont pas téléchargés sur le git. Ainsi, on souhaite nous signifier que ces fichiers ne sont disponibles que sur notre branche locale.
+5
+-­
+a)
+[mabelam@l3818-11 src]$ git pull
+Username for 'https://githost.gi.polymtl.ca': mabelam
+Password for 'https://mabelam@githost.gi.polymtl.ca':
+Already up-to-date.
+
+5
+-­
+b)
+Non, car les modifications apportées par l’équipier 1 n’ont pas été effectuées sur le même fichier. Il n’y aura donc pas de conflit.
+Copie  du  log:  
+[mabelam@l3818-11 src]$ git log --graph --decorate --all --oneline * c6a0891 (HEAD -> master, origin/master, origin/HEAD) Correction fct compteur HashMap.h et HashMap.cpp * fc6cf92 Ajout de la méthode compteur * f8f7daa Fichiers originaux * 1b2a6fd Commit administratif * 70996bc Premier commit
+
+E1.3
+3
+-­
+a)
+[wihar@l3818-10 src]$ git status
+Sur la branche master
+Votre branche est à jour avec 'origin/master'.
+Modifications qui ne seront pas validées :
+  (utilisez "git add <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git checkout -- <fichier>..." pour annuler les modifications dans la copie de travail)
+
+    modifié :         main.cpp
+
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+
+    pari
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+
+
+
+3
+-­
+b)
+[wihar@l3818-10 src]$ ./pari "../data/opportunities.txt"
+The Project Gutenberg eBook, Opportunities in Engineering, by Charles M. Horton This eBook is for the use of anyone anywhere at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org Title: Opportunities in Engineering Author: Charles M. Horton Release Date: February 24, 2008 [eBook #24681] Language: English ***START OF THE PROJECT GUTENBERG EBOOK OPPORTUNITIES IN ENGINEERING*** E-text prepared by Greg Bergquist and the Project Gutenberg Online Distributed Proofreading Team (http://www.pgdp.net) OPPORTUNITIES IN ENGINEERING * * * * * * OPPORTUNITY BOOKS OPPORTUNITIES IN ENGINEERING BY CHARLES M. HORTON OPPORTUNITIES IN AVIATION BY LIEUT. GORDON LAMONT And CAPTAIN ARTHUR SWEETSER OPPORTUNITIES IN CHEMISTRY BY ELLWOOD HENDRICK OPPORTUNITIES IN FARMING BY EDWARD OWEN DEAN OPPORTUNITIES IN MERCHANT SHIPS BY NELSON COLLINS OPPORTUNITIES IN NEWSPAPER BUSINESS BY JAMES MELVIN LEE HARPER & BROTHERS, NEW YORK ESTABLISHED 1817 * * * * * * OPPORTUNITIES IN ENGINEERING by CHARLES M. HORTON Harper & Brothers Publishers New York and London OPPORTUNITIES IN ENGINEERING Copyright 1920, by Harper & Brothers 
+
+[...]
+
+Gutenberg-tm eBooks are often created from several printed editions, all of which are confirmed as Public Domain in the U.S. unless a copyright notice is included. Thus, we do not necessarily keep eBooks in compliance with any particular paper edition. Most people start at our Web site which has the main PG search facility: http://www.gutenberg.org This Web site includes information about Project Gutenberg-tm, including how to make donations to the Project Gutenberg Literary Archive Foundation, how to help produce our new eBooks, and how to subscribe to our email newsletter to hear about new eBooks. 13
+v3
+v11
+v13
+
+6
+-­
+a)
+[mabelam@l3818-11 src]$ git fetch; git log --graph --decorate --all --oneline
+Username for 'https://githost.gi.polymtl.ca': mabelam
+Password for 'https://mabelam@githost.gi.polymtl.ca':
+* 89f8cf4 (HEAD -> master) Ajout de commentaires dans main.cpp
+| * a8327c0 (origin/master, origin/HEAD) Modification erreur: argv[0] changé pour argv[1]
+| * af7c919 Correction d'erreur: ajout d'accolade dans while
+| * a2840ef Modification main.cpp: Ouverture et lecture du fichier txt passé en arg depuis le terminal jusqu'au main
+|/  
+* c6a0891 Correction fct compteur HashMap.h et HashMap.cpp
+* fc6cf92 Ajout de la méthode compteur
+* f8f7daa Fichiers originaux
+* 1b2a6fd Commit administratif
+* 70996bc Premier commit
+
+
+6
+-­
+b)
+Il y aura une erreur lors d’un git merge, car les éléments modifiés sont les mêmes. En effet, l’équipier 1 et l’équipier 2 ont modifiés main.cpp et donc pari n’est pas le même sur les deux branches locales des équipiers 1 et 2. Ainsi, il faut régler le problème manuellement.
+
+Copie  du  log:    
+[wihar@l4714-06 log1000-62]$ git log
+commit 780faec6798190863c22193a69251366e6131922
+Merge: 89f8cf4 a8327c0
+Author: Mathieu Bélanger <mabelam@l3818-11.info.polymtl.ca>
+Date:   Tue Feb 7 13:04:32 2017 -0500
+
+    Merge remote-tracking branch 'refs/remotes/origin/master'
+    
+    # Veuillez entrer un message de validation pour expliquer en quoi cette fusion est
+    # nécessaire, surtout si cela fusionne une branche amont mise à jour dans une branche de sujet.
+    #
+    # Les lignes commençant par '#' seront ignorées, et un message vide
+    # abandonne la validation.
+
+commit 89f8cf448dd777a34e2cb3d882375ed75cba0a61
+Author: Mathieu Bélanger <mabelam@l3818-11.info.polymtl.ca>
+Date:   Tue Feb 7 12:46:45 2017 -0500
+
+    Ajout de commentaires dans main.cpp
+
+commit a8327c0dc198c265d441db99b768f853bd372fc2
+Author: William Harvey <wihar@l3818-10.info.polymtl.ca>
+Date:   Tue Feb 7 12:40:47 2017 -0500
+
+    Modification erreur: argv[0] changé pour argv[1]
+
+commit af7c919989d99e8907c51967009fbb8c44f417b5
+Author: William Harvey <wihar@l3818-10.info.polymtl.ca>
+Date:   Tue Feb 7 12:14:16 2017 -0500
+
+    Correction d'erreur: ajout d'accolade dans while
+
+commit a2840ef4f67594c41e64e510a3f551f5e3bf57d7
+Author: William Harvey <wihar@l3818-10.info.polymtl.ca>
+Date:   Tue Feb 7 12:11:11 2017 -0500
+
+    Modification main.cpp: Ouverture et lecture du fichier txt passé en arg depuis le terminal jusqu'au main
+
+commit c6a0891806dc670e2c5a6db76921a4e92dc3ca89
+Author: William Harvey <wihar@l3818-10.info.polymtl.ca>
+Date:   Tue Feb 7 11:04:14 2017 -0500
+
+    Correction fct compteur HashMap.h et HashMap.cpp
+
+commit fc6cf928c41847eae373964f4c9b3daa8d87b54c
+Author: William Harvey <wihar@l3818-12.info.polymtl.ca>
+Date:   Mon Feb 6 21:34:04 2017 -0500
+
+    Ajout de la méthode compteur
+
+commit f8f7daa2dd78d8ada1d4895a2e13f1361036e2d6
+Author: William Harvey <wihar@l3818-12.info.polymtl.ca>
+Date:   Mon Feb 6 20:48:10 2017 -0500
+
+
+
+
+E1.4
+5
+-­
+a)
+[mabelam@l3818-16 TP1]$ git pull
+Username for 'https://githost.gi.polymtl.ca': mabelam
+Password for 'https://mabelam@githost.gi.polymtl.ca':
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 5 (delta 3), reused 0 (delta 0)
+Dépaquetage des objets: 100% (5/5), fait.
+Depuis https://githost.gi.polymtl.ca/git/log1000-62
+   780faec..1bc2fce  master     -> origin/master
+Mise à jour 780faec..1bc2fce
+error: Your local changes to the following files would be overwritten by merge:
+    TP1/src/main.cpp
+Please, commit your changes or stash them before you can merge.
+Aborting
+
+5
+-­
+b)
+Oui il y a conflit, car les mêmes lignes d’un même fichier ont été modifiées par deux utilisateurs parallèlement. Lorsque l’usager 2 tente de push son code dans la branche master, le fichier main.cpp qu’il a utilisé n’est plus à jour car il a été modifié par l’utilisateur 1 entre temps.
+5
+-­
+c)
+Il faut “git add . “ et régler manuellement le conflit en choisissant quelles parties des lignes conflictuelles il faudra garder.
+
+6)
+
+[mabelam@l3818-16 src]$ git log -v
+commit 7c017acc726327076f45143a3418ea2f68ac6d1f
+Merge: 16a49b7 433fc72
+Author: Mathieu Bélanger <mabelam@l3818-16.info.polymtl.ca>
+Date:   Tue Feb 7 19:01:10 2017 -0500
+
+    Commit final
+
+commit 16a49b74ada6c81a90f9db056cf2bead1b08b252
+Author: Mathieu Bélanger <mabelam@l3818-16.info.polymtl.ca>
+Date:   Tue Feb 7 18:14:29 2017 -0500
+
+    Ajout Hash map forloop
+
+commit 433fc72c541ce1b880c81e1df84a65753503e152
+Author: William Harvey <wihar@l3818-11.info.polymtl.ca>
+Date:   Tue Feb 7 18:11:06 2017 -0500
+
+    Ajout pari
+
+commit 1bc2fceef0b24209b98c632de4f1ac2f1c8b0d1d
+Author: William Harvey <wihar@l3818-11.info.polymtl.ca>
+Date:   Tue Feb 7 18:06:57 2017 -0500
+
+    Mise en place du compteur dans le main
+
+commit 780faec6798190863c22193a69251366e6131922
+Merge: 89f8cf4 a8327c0
+Author: Mathieu Bélanger <mabelam@l3818-11.info.polymtl.ca>
+Date:   Tue Feb 7 13:04:32 2017 -0500
+
+    Merge remote-tracking branch 'refs/remotes/origin/master'
+    
+    # Veuillez entrer un message de validation pour expliquer en quoi cette fusion est
+    # nécessaire, surtout si cela fusionne une branche amont mise à jour dans une branche de sujet.
+    #
+    # Les lignes commençant par '#' seront ignorées, et un message vide
+    # abandonne la validation.
+
+commit 89f8cf448dd777a34e2cb3d882375ed75cba0a61
+Author: Mathieu Bélanger <mabelam@l3818-11.info.polymtl.ca>
+Date:   Tue Feb 7 12:46:45 2017 -0500
+
+    Ajout de commentaires dans main.cpp
+
+commit a8327c0dc198c265d441db99b768f853bd372fc2
+Author: William Harvey <wihar@l3818-10.info.polymtl.ca>
+Date:   Tue Feb 7 12:40:47 2017 -0500
+
+    Modification erreur: argv[0] changé pour argv[1]
+
+commit af7c919989d99e8907c51967009fbb8c44f417b5
+Author: William Harvey <wihar@l3818-10.info.polymtl.ca>
+Date:   Tue Feb 7 12:14:16 2017 -0500
+
+    Correction d'erreur: ajout d'accolade dans while
+
+commit a2840ef4f67594c41e64e510a3f551f5e3bf57d7
+Author: William Harvey <wihar@l3818-10.info.polymtl.ca>
+Date:   Tue Feb 7 12:11:11 2017 -0500
+
+    Modification main.cpp: Ouverture et lecture du fichier txt passé en arg depuis le terminal jusqu'au main
+
+commit c6a0891806dc670e2c5a6db76921a4e92dc3ca89
+Author: William Harvey <wihar@l3818-10.info.polymtl.ca>
+Date:   Tue Feb 7 11:04:14 2017 -0500
+
+    Correction fct compteur HashMap.h et HashMap.cpp
+
+commit fc6cf928c41847eae373964f4c9b3daa8d87b54c
+Author: William Harvey <wihar@l3818-12.info.polymtl.ca>
+Date:   Mon Feb 6 21:34:04 2017 -0500
+
+    Ajout de la méthode compteur
+
+commit f8f7daa2dd78d8ada1d4895a2e13f1361036e2d6
+Author: William Harvey <wihar@l3818-12.info.polymtl.ca>
+Date:   Mon Feb 6 20:48:10 2017 -0500
+
+    Fichiers originaux
+
+commit 1b2a6fdc629acea28d1672e5941d0912728eeb7f
+Author: admin <gigl-technique@polymtl.ca>
+Date:   Tue Sep 11 15:51:58 2012 -0400
+
+    Commit administratif
+
+commit 70996bca0add50159f527a3495c0e19d965081c1
+Author: Luc Lalonde <Luc.Lalonde@polymtl.ca>
+Date:   Tue Sep 11 15:31:01 2012 -0400
+
+    Premier commit
+
+
+7)  BONUS  
+Most people start at our Web site which has the main PG search facility: http://www.gutenberg.org This Web site includes information about Project Gutenberg-tm, including how to make donations to the Project Gutenberg Literary Archive Foundation, how to help produce our new eBooks, and how to subscribe to our email newsletter to hear about new eBooks.
+the apparait 1243 fois.
+
+
+E2.1
+a)
+          ___pari___
+         /        |         \
+        /         |          \
+     main.o  HashMap.o SomeKeyHash.o
+          |               |                       |
+main.cpp HashMap.cpp    SomeKeyHash.cpp
+          \            /                     /
+           \         /                     /   
+         HashMap.h             /
+                 /      \              /
+ HashNode.h  SomeKeyHash.h 
+
+pari:
+	-main.o
+		-main.cpp
+		-Hashmap.h
+			-HashNode.h
+			-SomeKeyHash.h
+	-HashMap.o
+		-HashMap.cpp
+		-HashMap.h
+			-HashNode.h
+			-SomeKeyHash.h
+	-SomeKeyHash.o
+		-SomeKeyHash.cpp
+		-SomeKeyHash.h
+
+E2.2
+Exécutez  
+«make»
+,  puis  insérez  la  sortie  des  deux  commandes  
+«touch  
+...;;  make»
+Partie  2
+:
+2)
+a)
+http://hpics.li/cf8dc5b 
+
+(si image ne charge pas:)
+real 1m11.838s
+user 0m0.313s
+sys  0m1.073s
+
+b)
+http://hpics.li/46113bf
+
+(si image ne charge pas:)
+real 0m56.997s
+user 0m0.326s
+sys  0m0.858s
+
+c) Oui, il y a une différence , car lorsqu’on change l’attribut callIDSet_, la recompilation du programme compile seulement une petite partie des fichiers, ainsi que leurs dépendances.
+
+
+
+Pondération
+du travail pratique
+Partie  
+1
+:
+Pour  E1.1  à  E1.4,  la  qualité  de  vos  messages  pour  les  «commits»:  [  /2]
+Pour  E1.1  à  E1.4,  la  qualité  du  code  source:  [  /2]
+E1.1  [  /3]
+a)  [  /2]
+b)  [  /1]
+E1.2  [  /10]
+2
+-­
+a)  [  /3]
+2
+-­
+b)  [  /1]
+5
+-­
+a)  [  /3]
+Travail  pratique  #1:  GIT  et  Makefiles                      
+v.  
+24
+/01/201
+7
+3
+5
+-­
+b)  [  /2]
+Copie  du  log:  [  /1]
+E1.3  [  /10]
+3
+-­
+a)  [  /3]
+3
+-­
+b)  [  /1]
+6
+-­
+a)  [  /3]
+6
+-­
+b)  [  /2]
+Copie  du  log:  [  /1]
+E1.4  [  /10]
+5
+-­
+a)  [  /3]
+5
+-­
+b)  [  /3]
+5
+-­
+c)  [  /3]
+7)  BONUS  [/1]
+Copie  du  log:  [  /1]
+E2.1  [  /5]
+Insérez  votre  graphe  de  dépendances  ici  
+[  /5]
+E2.2  [  /10]
+Fichier  Makefile  [  /7]
+Exécutez  
+«make»
+,  puis  insérez  la  sortie  des  deux  commandes  
+«touch  
+...;;  make»  [  /3]
+Parie  2
+:  [  /
+8
+]
+2)
+a)  [  /
+2
+]
+b)  [
+/2
+]
+c)  [
+/2
+]
+b)
+[  /
+2
+]
+TOTAL:  [  /
+60
+]
+

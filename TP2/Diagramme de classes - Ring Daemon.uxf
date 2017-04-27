@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>225</y>
+      <w>261</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>*Conference*
+--
+-string id_
+-ConferenceState confState_
+-ParticipantSet participants_
+--
++bindParticipant(string &amp;participant_id)
++add(string &amp;participant_id)
++remove(string &amp;participant_id)
++toggleRecording()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>45</x>
+      <y>864</y>
+      <w>396</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>*Account*
+--
+#string accountID_
+#string username_
+#string hostname_
+#ringtoneEnabled_
+--
++serialize(YAML::Emitter &amp;out)
++unserialize(const YAML::Node &amp;node)
++doUnregister()
++newOutgoingCall(const std::string&amp; toUrl) 
++sendTextMessage(to UNUSED, map&lt;string,payloads UNUSED)
++attachCall(id)
++detachCall(id)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>531</x>
+      <y>621</y>
+      <w>360</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>*Manager*
+--
++setAutoAnswer()
++anserCall(id)
++hangupCall(id)
++onHoldCall(id) 
++refuseCall(to UNUSED, map&lt;string,payloads UNUSED)
++addParticipant(call_id, conference_id)
++joinConference(conf_id1, conf_id2)
++incomingMessage(callID, from, messages)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>927</x>
+      <y>387</y>
+      <w>360</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>*PluginManager*
+--
+-PluginMap               dynPluginMap_
+-ExitFuncVec            exitFuncVec_
+-ObjectFactoryMap   exactMatchMap_
+-ObjectFactoryVec   wildCardVec_ 
+-&lt;ServiceFunction&gt; services_
+-struct                      ObjectFactory 
+--
++load(path)
++registerService(id)
++unRegisterService(name)
++createObject(type)
++joinConference(conf_id1, conf_id2)
++incomingMessage(callID, from, messages)
+-registerObjectFactory(type,factory)
+-invokeService_(api,name,data)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>63</x>
+      <y>378</y>
+      <w>360</w>
+      <h>396</h>
+    </coordinates>
+    <panel_attributes>*Call*
+--
+#bool isAudioMuted_
+#bool isVideoMuted_
+#bool quiet
+int localAudioPort_
+-int localVideoPort_
+-string id_
+-string confID_
+-callType type_
+-callState_
+-string peerNumber_
+-bool isOPTOPOP_
+--
++answer()
++hangup(reason)
++seitchInput()
++refuse()
++transfer(to)
++attendedTransfer(to)
++onhold()
++offhold()
++muteMedia(mediaType, isMuted)
++peerHungup()
++sendTextMessage(messages, from)
++removeCall()
++addSubCall(call)
++Call(account, id, type)
+-validStateTransition(newstate)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>216</x>
+      <y>747</y>
+      <w>44</w>
+      <h>134</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>27;27;27;117</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>405</y>
+      <w>225</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>*CallFactory*
+--
+-recursive_mutex callMapsMutex_
+-CallMap&lt;Call&gt; callMaps_
+-atomic_bool allowNewCall_
+--
++removeCall(call)
++hasCall(id)
++newCall(a, id, type)
++clear()
++callCount()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>351</x>
+      <y>45</y>
+      <w>180</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>*enum ConnectionState*
+--
+DISCONNECTED
+TRYING
+PROGRESSING
+RINGING
+CONNECTED
+COUNT</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9</x>
+      <y>45</y>
+      <w>135</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>*enum CallState*
+--
+INACTIVE
+ACTIVE
+HOLD BUSY
+MERROR
+OVER
+COUNT</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>162</x>
+      <y>45</y>
+      <w>171</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>*enum ConnectionType*
+--
+INCOMING
+OUTGOING 
+MISSED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>234</x>
+      <y>135</y>
+      <w>170</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>153;27;27;126</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>81</x>
+      <y>135</y>
+      <w>179</w>
+      <h>134</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>27;27;162;117</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>225</x>
+      <y>90</y>
+      <w>44</w>
+      <h>179</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>27;27;27;162</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>549</x>
+      <y>918</y>
+      <w>90</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>/Serializable/
+--
+serialize()
+unserialize()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>918</y>
+      <w>171</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>-</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>252</x>
+      <y>243</y>
+      <w>396</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>-</panel_attributes>
+    <additional_attributes>10.0;20.0;420.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>90</x>
+      <y>243</y>
+      <w>324</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>/Recordable/
+--
+isRecording() const
+toggleRecording()
+stopRecording()
+initRecFilename()
+setRecordingAudioFormat(AudioFormat format)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>72</x>
+      <y>252</y>
+      <w>189</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>-</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>738</x>
+      <y>540</y>
+      <w>27</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>414</x>
+      <y>684</y>
+      <w>135</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>990</x>
+      <y>243</y>
+      <w>180</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>*enum ConnectionState*
+--
+ACTIVE_ATTACHED
+ACTIVE_DETACHED
+ACTIVE_ATTACHED_REC
+ACTIVE_DETACHED_REC
+HOLD
+HOLD_REC</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>864</x>
+      <y>243</y>
+      <w>143</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>126;27;27;27</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>846</x>
+      <y>423</y>
+      <w>99</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>414</x>
+      <y>450</y>
+      <w>234</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>464</x>
+      <y>264</y>
+      <w>128</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>*Menu*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>664</x>
+      <y>192</y>
+      <w>280</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Certification*
+--
++controleAuthentification(utilisateurCourant)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>328</x>
+      <y>440</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*BaseDeDonnées*
+--
++creerLienPartage(utilisateurCourant)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>304</x>
+      <y>696</y>
+      <w>248</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>*ListeContact*
+--
++ajouterContact(unUtilisateur)
++supprimerContact(unUtilisateur)
++BloquerContact(unUtilisateur)
+-Utilisateur listeUtilisateurs[nUtilisateurs]_
+-Utilisateur listeUtilisateursBloquees[]_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>376</y>
+      <w>24</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>304</x>
+      <y>336</y>
+      <w>368</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>*GestionDesContacts*
+--
++afficherLienPartage(utilisateurCourant)
+-bool estAutoriseDacces_: (resultat du controleDauthentification)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>664</x>
+      <y>392</y>
+      <w>176</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>*GestionDuProfil*
+--
++creerProfil(unUtilisateur)
++modifierProfil(unUtilisateur)
+-estAutoriseDacces_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>264</y>
+      <w>48</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>224</y>
+      <w>192</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;40.0;220.0;40.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>464</x>
+      <y>616</y>
+      <w>416</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>*GroupeDeContacts*
+--
++ajouterMembre(unContact)
++supprimerMembre(unContact)
+-membresGroupeContact[nGroupesDeContacts]_: Contient des contacts</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>384</x>
+      <y>552</y>
+      <w>88</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Utilisateur*
+--
+-string ID</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>424</x>
+      <y>472</y>
+      <w>24</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>424</x>
+      <y>584</y>
+      <w>24</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;&gt;&gt;&gt;&gt;
+m1=1
+m2=*
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>584</x>
+      <y>264</y>
+      <w>208</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+m2=1
+</panel_attributes>
+    <additional_attributes>240.0;160.0;240.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>792</x>
+      <y>224</y>
+      <w>104</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>60.0;250.0;110.0;250.0;110.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>656</x>
+      <y>448</y>
+      <w>40</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>30.0;10.0;30.0;160.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>536</y>
+      <w>88</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>*Profil*
+--
+-nom_
+-courriel_
+		...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>464</x>
+      <y>576</y>
+      <w>64</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=*</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>464</x>
+      <y>552</y>
+      <w>128</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>824</x>
+      <y>712</y>
+      <w>216</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>*GestionDesCommunications*
+--
++faireUnAppel(unAppelSurServeur)
++accepterAppel(unAppelSurServeur)
++refuserAppel(unAppelSurServeur)
++chatLogInit(unAppelSurServeur)
+-estAutoriseDacces_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>688</x>
+      <y>472</y>
+      <w>216</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>*AppelSurServeur*
+--
++ajouterContact(unContact)
++ajouterGroupeContact(
+unGroupeDeContact)
++terminerAppel()
++envoyerMessage(unMessage)
++envoyerFichier(unFichier)
++verifierConnexion
+-groupe_
+-Utilisateurs listeUtilisateursDansAppel_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>872</x>
+      <y>416</y>
+      <w>176</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;10.0;200.0;340.0;130.0;340.0;130.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>736</y>
+      <w>296</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>350.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>552</y>
+      <w>96</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>*Message*
+--
++creerMessage
+-string message_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>464</y>
+      <w>104</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Fichier*
+--
+-string fichier_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>496</y>
+      <w>88</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;</panel_attributes>
+    <additional_attributes>90.0;10.0;90.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>496</y>
+      <w>24</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>584</x>
+      <y>264</y>
+      <w>488</w>
+      <h>504</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+m2=1
+</panel_attributes>
+    <additional_attributes>570.0;610.0;590.0;610.0;590.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>568</y>
+      <w>32</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;20.0;10.0;20.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>800</x>
+      <y>832</y>
+      <w>248</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*NotificateurDappel*
+--
++envoyerNotif(listeUtilisateursDansAppel)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>928</x>
+      <y>792</y>
+      <w>24</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>504</y>
+      <w>184</w>
+      <h>368</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0;210.0;440.0;190.0;440.0</additional_attributes>
+  </element>
+</diagram>
